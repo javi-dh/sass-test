@@ -1,0 +1,241 @@
+@import 'variables'
+
+body
+	background-color: #f2f2f2
+	padding: 10px
+	margin: 50px auto
+	width: $base-width
+	@media (min-width: 650px)
+		font-family: monospace
+p
+	$color: red
+	color: $color
+	text-align: center
+	@if $base-color == $color
+		font-size: 20px
+	em
+		color: green
+	@media (min-width: 650px)
+		color: pink
+
+
+// Listas - siempre comienzan en 1, a diferencia de los arrays
+$colores: #ff0000, #000000, #0000ff, #f2f2f2
+
+b
+	color: nth($colores, 1)
+	// función nth - permite acceder a un valor de la lista
+
+	font-size: length($colores) + px
+	border-color: nth($colores, length($colores))
+	// funcion length - devuelve un number igual a la cantidad de items de la lista
+
+
+// funciones de listas
+@function first($lista)
+	@return nth($lista, 1)
+
+@function last($lista)
+	@return nth($lista, length($lista))
+
+p
+	$color: nth($colores, 3)
+	color: $color
+	border-color: last($colores)
+	@if $color == #ff0000
+		display: block
+	@else if $color == #000000
+		display: none
+	@else
+		display: inline-block
+
+$social: 'tw', 'fb', 'ig', 'yt'
+$s-color: #29cdab, #26596c, #abb4bb, #e91737
+$s-number: 1
+
+@each $valor in $social
+	.#{$valor}-icon
+		color: nth($s-color, $s-number)
+	$s-number: $s-number + 1
+
+
+$lista: 'red', 'green', 'blue'
+@each $valor in $lista
+	.#{$valor}
+		color: #{$valor}
+
+// while
+$divs: 5
+$divs-width: 5%
+$n: 5
+
+@while $divs > 0
+	.el-#{$divs}
+		width: $divs-width + $n
+	$divs: $divs - 1
+	$n: $n + 5
+
+*
+	margin: 0
+	line-height: 1.5
+
+ul
+	list-style: none
+	margin: 0
+	padding: 0
+
+.container
+	max-width: 1200px
+	margin: auto
+
+// https://coolors.co
+$colors: #5bc0eb, #fde74c, #9bc53d, #373f51, #db504a
+$n: 1
+
+=btn($px)
+	padding: $px
+	border-radius: $px
+	margin-bottom: $px
+	@content
+
+.list
+	li
+		font-style: italic
+		font-size: 1.6em
+		color: #FFFFFF
+		+btn(5px)
+			box-shadow: 0 0 1px #b3b3b3
+		@each $color in $colors
+			&:nth-child(#{length($colors)}n + #{$n})
+				$the-color: nth($colors, $n)
+				background-color: $the-color
+				@if $the-color == #fde74c
+					color: #222
+				&:hover
+					background-color: lighten($the-color, 20)
+			$n: $n + 1
+
+
+$colors2: #319ebb, #751403, #3ee682, #e99c18, #83c4c0
+$n2: 1
+@for $i from 1 through length($colors2)
+// @for $i from 1 to length($colors2)
+	.el-#{$i}
+		color: nth($colors2, $i)
+	$i: $i + 1
+
+=powerPadding($color, $fz, $pads...)
+	padding: $pads
+	color: $color
+	font-size: $fz
+
+.one
+	+powerPadding(red, 14px, 20px)
+.two
+	+powerPadding(pink, 20px, 20px 30px)
+.three
+	+powerPadding(orange, 1px, 20px 10px 30px)
+.four
+	+powerPadding(green, 2px, 20px 0 10px 50px)
+
+=arrow($bw, $color, $pos: none)
+	&:after
+		content: ''
+		border-width: $bw
+		border-style: solid
+		position: absolute
+		@if $pos == "left" or $pos == "right"
+			margin-top: -$bw
+			top: 50%
+		@if $pos == "top" or $pos == "bottom"
+			margin-left: -$bw
+			left: 50%
+		@if $pos == "left"
+			border-color: transparent $color transparent transparent
+			left: -($bw * 2)
+		@else if $pos == "right"
+			border-color: transparent transparent transparent $color
+			right: -($bw * 2)
+		@else if $pos == "bottom"
+			border-color: $color transparent transparent transparent
+			bottom: -($bw * 2)
+		@else if $pos == "top"
+			border-color:  transparent transparent $color transparent
+			top: -($bw * 2)
+		@else
+			content: none
+
+.mrTriangle
+	$w: 300px
+	max-width: $w
+	height: ($w / 2)
+	// background: linear-gradient(to right, #5ab1bb, darken(#5ab1bb, 15))
+	background: #5ab1bb
+	border-radius: 10px
+	margin: 30px auto
+	position: relative
+	+arrow(30px, #5ab1bb, "left")
+	display: flex
+	justify-content: center
+	align-items: center
+	font-size: 3em
+	color: #FFFFFF
+
+=ribbon($color, $bdw)
+	$color: darken($color, 8)
+	&::after,
+	&::before
+		content: ''
+		border-style: solid
+		border-width: $bdw
+		position: absolute
+		top: 15px
+		z-index: -1
+	&::after
+		border-color: $color #f2f2f2 $color $color
+		right: -$bdw + (-10)
+	&::before
+		border-color: $color $color $color #f2f2f2
+		left: -$bdw + (-10)
+
+=subRibbon($color)
+	$color: darken($color, 20)
+	&::after,
+	&::before
+		content: ''
+		border-style: solid
+		border-width: 10px
+		position: absolute
+		top: -10px
+	&::after
+		border-color: transparent $color transparent transparent
+		right: 5px
+		transform: rotate(45deg)
+	&::before
+		border-color: transparent transparent transparent $color
+		left: 5px
+		transform: rotate(-45deg)
+
+=fullRibbon($color, $h)
+	max-width: 750px
+	line-height: $h
+	background-color: $color
+	text-align: center
+	position: relative
+	margin: 50px auto
+	font-size: 1.5em
+	color: #FFFFFF
+	+ribbon($color, ($h / 2))
+	span
+		display: block
+		position: relative
+		width: 100%
+		+subRibbon($color)
+
+.ribbon
+	&.pink
+		+fullRibbon(#ff1654, 50px)
+	&.yellow
+		+fullRibbon(#ffe563, 50px)
+	&.green
+		+fullRibbon(rgb(33, 226, 69), 50px)

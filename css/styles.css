@@ -1,0 +1,272 @@
+body {
+  background-color: #f2f2f2;
+  padding: 10px;
+  margin: 50px auto;
+  width: 1200px; }
+  @media (min-width: 650px) {
+    body {
+      font-family: monospace; } }
+
+p {
+  color: red;
+  text-align: center;
+  font-size: 20px; }
+  p em {
+    color: green; }
+  @media (min-width: 650px) {
+    p {
+      color: pink; } }
+
+b {
+  color: #ff0000;
+  font-size: 4px;
+  border-color: #f2f2f2; }
+
+p {
+  color: #0000ff;
+  border-color: #f2f2f2;
+  display: inline-block; }
+
+.tw-icon {
+  color: #29cdab; }
+
+.fb-icon {
+  color: #26596c; }
+
+.ig-icon {
+  color: #abb4bb; }
+
+.yt-icon {
+  color: #e91737; }
+
+.red {
+  color: red; }
+
+.green {
+  color: green; }
+
+.blue {
+  color: blue; }
+
+.el-5 {
+  width: 10%; }
+
+.el-4 {
+  width: 15%; }
+
+.el-3 {
+  width: 20%; }
+
+.el-2 {
+  width: 25%; }
+
+.el-1 {
+  width: 30%; }
+
+* {
+  margin: 0;
+  line-height: 1.5; }
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.container {
+  max-width: 1200px;
+  margin: auto; }
+
+.list li {
+  font-style: italic;
+  font-size: 1.6em;
+  color: #FFFFFF;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  box-shadow: 0 0 1px #b3b3b3; }
+  .list li:nth-child(5n + 1) {
+    background-color: #5bc0eb; }
+    .list li:nth-child(5n + 1):hover {
+      background-color: #b6e3f6; }
+  .list li:nth-child(5n + 2) {
+    background-color: #fde74c;
+    color: #222; }
+    .list li:nth-child(5n + 2):hover {
+      background-color: #fef5b1; }
+  .list li:nth-child(5n + 3) {
+    background-color: #9bc53d; }
+    .list li:nth-child(5n + 3):hover {
+      background-color: #c3dc8c; }
+  .list li:nth-child(5n + 4) {
+    background-color: #373f51; }
+    .list li:nth-child(5n + 4):hover {
+      background-color: #606e8e; }
+  .list li:nth-child(5n + 5) {
+    background-color: #db504a; }
+    .list li:nth-child(5n + 5):hover {
+      background-color: #eca29f; }
+
+.one {
+  padding: 20px;
+  color: red;
+  font-size: 14px; }
+
+.two {
+  padding: 20px 30px;
+  color: pink;
+  font-size: 20px; }
+
+.three {
+  padding: 20px 10px 30px;
+  color: orange;
+  font-size: 1px; }
+
+.four {
+  padding: 20px 0 10px 50px;
+  color: green;
+  font-size: 2px; }
+
+.mrTriangle {
+  max-width: 300px;
+  height: 150px;
+  background: #5ab1bb;
+  border-radius: 10px;
+  margin: 30px auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  color: #FFFFFF; }
+  .mrTriangle:after {
+    content: '';
+    border-width: 30px;
+    border-style: solid;
+    position: absolute;
+    margin-top: -30px;
+    top: 50%;
+    border-color: transparent #5ab1bb transparent transparent;
+    left: -60px; }
+
+.ribbon.pink {
+  max-width: 750px;
+  line-height: 50px;
+  background-color: #ff1654;
+  text-align: center;
+  position: relative;
+  margin: 50px auto;
+  font-size: 1.5em;
+  color: #FFFFFF; }
+  .ribbon.pink::after, .ribbon.pink::before {
+    content: '';
+    border-style: solid;
+    border-width: 25px;
+    position: absolute;
+    top: 15px;
+    z-index: -1; }
+  .ribbon.pink::after {
+    border-color: #ec003f #f2f2f2 #ec003f #ec003f;
+    right: -35px; }
+  .ribbon.pink::before {
+    border-color: #ec003f #ec003f #ec003f #f2f2f2;
+    left: -35px; }
+  .ribbon.pink span {
+    display: block;
+    position: relative;
+    width: 100%; }
+    .ribbon.pink span::after, .ribbon.pink span::before {
+      content: '';
+      border-style: solid;
+      border-width: 10px;
+      position: absolute;
+      top: -10px; }
+    .ribbon.pink span::after {
+      border-color: transparent #af002f transparent transparent;
+      right: 5px;
+      transform: rotate(45deg); }
+    .ribbon.pink span::before {
+      border-color: transparent transparent transparent #af002f;
+      left: 5px;
+      transform: rotate(-45deg); }
+
+.ribbon.yellow {
+  max-width: 750px;
+  line-height: 50px;
+  background-color: #ffe563;
+  text-align: center;
+  position: relative;
+  margin: 50px auto;
+  font-size: 1.5em;
+  color: #FFFFFF; }
+  .ribbon.yellow::after, .ribbon.yellow::before {
+    content: '';
+    border-style: solid;
+    border-width: 25px;
+    position: absolute;
+    top: 15px;
+    z-index: -1; }
+  .ribbon.yellow::after {
+    border-color: #ffde3a #f2f2f2 #ffde3a #ffde3a;
+    right: -35px; }
+  .ribbon.yellow::before {
+    border-color: #ffde3a #ffde3a #ffde3a #f2f2f2;
+    left: -35px; }
+  .ribbon.yellow span {
+    display: block;
+    position: relative;
+    width: 100%; }
+    .ribbon.yellow span::after, .ribbon.yellow span::before {
+      content: '';
+      border-style: solid;
+      border-width: 10px;
+      position: absolute;
+      top: -10px; }
+    .ribbon.yellow span::after {
+      border-color: transparent #fcd200 transparent transparent;
+      right: 5px;
+      transform: rotate(45deg); }
+    .ribbon.yellow span::before {
+      border-color: transparent transparent transparent #fcd200;
+      left: 5px;
+      transform: rotate(-45deg); }
+
+.ribbon.green {
+  max-width: 750px;
+  line-height: 50px;
+  background-color: #21e245;
+  text-align: center;
+  position: relative;
+  margin: 50px auto;
+  font-size: 1.5em;
+  color: #FFFFFF; }
+  .ribbon.green::after, .ribbon.green::before {
+    content: '';
+    border-style: solid;
+    border-width: 25px;
+    position: absolute;
+    top: 15px;
+    z-index: -1; }
+  .ribbon.green::after {
+    border-color: #19c139 #f2f2f2 #19c139 #19c139;
+    right: -35px; }
+  .ribbon.green::before {
+    border-color: #19c139 #19c139 #19c139 #f2f2f2;
+    left: -35px; }
+  .ribbon.green span {
+    display: block;
+    position: relative;
+    width: 100%; }
+    .ribbon.green span::after, .ribbon.green span::before {
+      content: '';
+      border-style: solid;
+      border-width: 10px;
+      position: absolute;
+      top: -10px; }
+    .ribbon.green span::after {
+      border-color: transparent #128b29 transparent transparent;
+      right: 5px;
+      transform: rotate(45deg); }
+    .ribbon.green span::before {
+      border-color: transparent transparent transparent #128b29;
+      left: 5px;
+      transform: rotate(-45deg); }
