@@ -5,7 +5,7 @@ var sass        = require('gulp-sass');
 // Static Server + watching sass/html files
 gulp.task('serve', ['sass'], function() {
 	browserSync.init({
-		proxy: "localhost/php/sass-test"
+		proxy: "localhost/adbox/sass-test"
 	});
 
 	gulp.watch("./sass/*.sass", ['sass']);
