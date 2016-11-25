@@ -1,4 +1,5 @@
 @import 'variables'
+@import 'mixins'
 
 body
 	background-color: #f2f2f2
@@ -92,12 +93,6 @@ ul
 $colors: #5bc0eb, #fde74c, #9bc53d, #373f51, #db504a
 $n: 1
 
-=btn($px)
-	padding: $px
-	border-radius: $px
-	margin-bottom: $px
-	@content
-
 .list
 	li
 		font-style: italic
@@ -124,10 +119,6 @@ $n2: 1
 		color: nth($colors2, $i)
 	$i: $i + 1
 
-=powerPadding($color, $fz, $pads...)
-	padding: $pads
-	color: $color
-	font-size: $fz
 
 .one
 	+powerPadding(red, 14px, 20px)
@@ -137,33 +128,6 @@ $n2: 1
 	+powerPadding(orange, 1px, 20px 10px 30px)
 .four
 	+powerPadding(green, 2px, 20px 0 10px 50px)
-
-=arrow($bw, $color, $pos: none)
-	&:after
-		content: ''
-		border-width: $bw
-		border-style: solid
-		position: absolute
-		@if $pos == "left" or $pos == "right"
-			margin-top: -$bw
-			top: 50%
-		@if $pos == "top" or $pos == "bottom"
-			margin-left: -$bw
-			left: 50%
-		@if $pos == "left"
-			border-color: transparent $color transparent transparent
-			left: -($bw * 2)
-		@else if $pos == "right"
-			border-color: transparent transparent transparent $color
-			right: -($bw * 2)
-		@else if $pos == "bottom"
-			border-color: $color transparent transparent transparent
-			bottom: -($bw * 2)
-		@else if $pos == "top"
-			border-color:  transparent transparent $color transparent
-			top: -($bw * 2)
-		@else
-			content: none
 
 .mrTriangle
 	$w: 300px
@@ -180,57 +144,6 @@ $n2: 1
 	align-items: center
 	font-size: 3em
 	color: #FFFFFF
-
-=ribbon($color, $bdw)
-	$color: darken($color, 8)
-	&::after,
-	&::before
-		content: ''
-		border-style: solid
-		border-width: $bdw
-		position: absolute
-		top: 15px
-		z-index: -1
-	&::after
-		border-color: $color #f2f2f2 $color $color
-		right: -$bdw + (-10)
-	&::before
-		border-color: $color $color $color #f2f2f2
-		left: -$bdw + (-10)
-
-=subRibbon($color)
-	$color: darken($color, 20)
-	&::after,
-	&::before
-		content: ''
-		border-style: solid
-		border-width: 10px
-		position: absolute
-		top: -10px
-	&::after
-		border-color: transparent $color transparent transparent
-		right: 5px
-		transform: rotate(45deg)
-	&::before
-		border-color: transparent transparent transparent $color
-		left: 5px
-		transform: rotate(-45deg)
-
-=fullRibbon($color, $h)
-	max-width: 750px
-	line-height: $h
-	background-color: $color
-	text-align: center
-	position: relative
-	margin: 50px auto
-	font-size: 1.5em
-	color: #FFFFFF
-	+ribbon($color, ($h / 2))
-	span
-		display: block
-		position: relative
-		width: 100%
-		+subRibbon($color)
 
 .ribbon
 	&.pink

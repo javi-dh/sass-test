@@ -1,16 +1,10 @@
 <?php
-	$title ='Home';
+	$title ='Inicio';
+	require_once 'includes/head.php';
 ?>
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title> <?= $title ?> - Sass </title>
-		<link rel="stylesheet" href="css/styles.css">
-	</head>
+</head>
 	<body>
-		<img alt="img" width="100%" style="display: block; margin: auto" src="https://pbs.twimg.com/profile_banners/293665915/1398362831/1500x500">
-
+		<img alt="img" width="100%" style="display: block; margin: auto;" src="https://pbs.twimg.com/profile_banners/293665915/1398362831/1500x500">
 		<div class="ribbon yellow">
 			CSS & SASS Rules HaHa
 			<span></span>
