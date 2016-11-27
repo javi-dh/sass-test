@@ -7,4 +7,7 @@ Pasos para compilar SASS con GULP
 	- npm install --save-dev gulp
 	- npm install --save-dev gulp-sass
 	- npm install --save-dev gulp-sourcemaps
+	- npm install --save-dev gulp-autoprefixer
+	- npm install --save-dev browser-sync
+	- npm install --save-dev sassdoc
 5. Hacer gulpfile.js con los task necesarios

@@ -1,30 +1,39 @@
 var gulp        = require('gulp');
 var browserSync = require('browser-sync').create();
+var sassdoc = require('sassdoc');
 var sass        = require('gulp-sass');
-
 var sourcemaps = require('gulp-sourcemaps');
+const autoprefixer = require('gulp-autoprefixer');
 
-// Static Server + watching sass/html files
+// Servidor Localhost + watch sobre archivos css/html
 gulp.task('serve', ['sass'], function() {
 	browserSync.init({
 		proxy: "localhost/adbox/sass-test"
 	});
 
-	gulp.watch("./sass/*.sass", ['sass']);
-	gulp.watch("./*.php").on('change', browserSync.reload);
+	gulp.watch("./sass/*.sass", ['sass'])
+	gulp.watch("./*.php").on('change', browserSync.reload)
 });
 
-// Compile sass into CSS & auto-inject into browsers
+// Compilar SASS a CSS & auto inyección de cambios en el browser
 gulp.task('sass', function() {
-	return gulp.src("./sass/*.sass")
-	.pipe(sass())
-	//   .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+	return gulp
+	.src('./sass/*.sass')
 	.pipe(sourcemaps.init())
-	.pipe(sourcemaps.write(''))
 
-	.pipe(gulp.dest("./css"))
+	.pipe(sass().on('error', sass.logError))
+	// .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+	// Si queremos compilar y minificar al mismo tiempo
 
-	.pipe(browserSync.stream());
+	.pipe(autoprefixer()) // Debe ir antes del sourcemaps.write
+
+	.pipe(sourcemaps.write())
+
+	.pipe(gulp.dest('./css'))
+
+	.pipe(sassdoc())
+
+	.pipe(browserSync.stream())
 });
 
 gulp.task('default', ['serve']);

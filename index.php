@@ -4,6 +4,7 @@
 ?>
 </head>
 	<body>
+		No funca jueputa vida
 		<img alt="img" width="100%" style="display: block; margin: auto;" src="https://pbs.twimg.com/profile_banners/293665915/1398362831/1500x500">
 		<div class="ribbon yellow">
 			CSS & SASS Rules HaHa
