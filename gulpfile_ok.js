@@ -2,7 +2,6 @@ var gulp = require('gulp');
 // var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 
-
 gulp.task('styles', function() {
     gulp.src('./sass/**/*.sass')
 		// .pipe(sourcemaps.init())
