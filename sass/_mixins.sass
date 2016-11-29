@@ -4,6 +4,12 @@
 	margin-bottom: $px
 	@content
 
+/// Padding super poderoso
+/// @group mixins
+/// @access public
+/// @param {String} $color - Color de la letra
+/// @param {Number} $fz - Tamaño de la letra
+/// @param {Number} $pads... - Permite pasar 1, 2, 3 o 4 valores de padding
 =powerPadding($color, $fz, $pads...)
 	padding: $pads
 	color: $color

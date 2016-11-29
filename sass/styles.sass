@@ -2,13 +2,30 @@
 @import 'mixins'
 @import 'ribbons'
 
+*
+	margin: 0
+	line-height: 1.5
+
+/// This is a poster comment.
+/// @author Author's name
 body
-	background-color: #f2f2f2
-	padding: 200px
+	$bgc: #f2f2f2
+	background-color: $bgc
+	padding: 50px
 	margin: 50px auto
 	max-width: $base-width
 	@media (min-width: 650px)
 		font-family: monospace
+	@if $bgc == #000
+		color: #FFF
+	@else
+		color: #222
+
+ul
+	list-style: none
+	margin: 0
+	padding: 0
+
 p
 	$color: red
 	color: $color
@@ -40,7 +57,7 @@ b
 @function last($lista)
 	@return nth($lista, length($lista))
 
-p
+strong
 	$color: nth($colores, 3)
 	color: $color
 	border-color: last($colores)
@@ -54,11 +71,14 @@ p
 $social: 'tw', 'fb', 'ig', 'yt'
 $s-color: #29cdab, #26596c, #abb4bb, #e91737
 $s-number: 1
+$alto: 0
 
 @each $valor in $social
 	.#{$valor}-icon
 		color: nth($s-color, $s-number)
+		background-position: 0 $alto
 	$s-number: $s-number + 1
+	$alto: $alto + (-20px)
 
 
 $lista: 'red', 'green', 'blue'
@@ -77,14 +97,7 @@ $n: 5
 	$divs: $divs - 1
 	$n: $n + 5
 
-*
-	margin: 0
-	line-height: 1.5
 
-ul
-	list-style: none
-	margin: 0
-	padding: 0
 
 .container
 	max-width: 1200px
@@ -110,16 +123,6 @@ $n: 1
 				&:hover
 					background-color: lighten($the-color, 20)
 			$n: $n + 1
-
-
-$colors2: #319ebb, #751403, #3ee682, #e99c18, #83c4c0
-$n2: 1
-@for $i from 1 through length($colors2)
-// @for $i from 1 to length($colors2)
-	.el-#{$i}
-		color: nth($colors2, $i)
-	$i: $i + 1
-
 
 .one
 	+powerPadding(red, 14px, 20px)
@@ -148,3 +151,55 @@ $n2: 1
 	transition: 300ms
 	&:hover
 		opacity: 0.6
+
+$medidas: 5px, 2px, 1px
+.ancho
+	$acum: 0
+	@for $i from 1 through length($medidas)
+		$acum: $acum + nth($medidas, $i)
+	width: $acum
+
+$colors2: #319ebb, #751403, #3ee682, #e99c18, #83c4c0
+$index: 1
+
+@each $value in $colors2
+	.mi-p:nth-child(#{$index})
+		color: nth($colors2, $index)
+	$index: $index + 1
+
+@for $i from 1 through length($colors2)
+	.color-#{$i}
+		color: nth($colors2, $i)
+		$i: $i + 1
+
+$totalColors: length($colors2)
+@while $totalColors > 0
+	.otro-color-#{$totalColors}
+		color: nth($colors2, $totalColors)
+		$totalColors: $totalColors - 1
+
+$sprite: "facebook", "twitter", "youtube", "instagram"
+$x-pos: 0
+
+span[class^=icono-]
+	display: inline-block
+	background-image: url(../images/social-icons.jpg)
+	width: 100px
+	height: 100px
+
+@each $val in $sprite
+	.icono-#{$val}
+		background-position: $x-pos 0
+		&:hover
+			background-position:  $x-pos -100px
+		$x-pos: $x-pos + 100px
+
+
+$cantidad: 10
+$altura: 300px
+
+@while $cantidad > 0
+	.elemento:nth-child(#{$cantidad})
+		height: $altura
+	$cantidad: $cantidad - 1
+	$altura: $altura - 10

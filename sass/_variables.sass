@@ -1,16 +1,23 @@
-/// Baseline for all margins and gaps on the site
-/// @group configuration
+/// Color base para toda la aplicación
+/// @group colors
 /// @access public
-/// @type Number
-$baseline: 1.5em
-
+/// @type String
+/// @author Japsolo
 $base-color: red
 
-$base-width: 1200px
+/// Color compuesto, decanta del color base oscurecido en un 10%
+/// @group colors
+/// @access public
+/// @type String
+/// @example
+///   4 + 2 = 8
+///   4 / 2 = 2
+$comp-color: darken($base-color, 10)
 
-/// @base share-buttons
-/// ---
-/// Container Element for the Sharing Buttons
-.share-buttons
-	list-style: none
-	padding-left: 0
+/// Tercer color, decanta del color base aclarado en un 20000%
+/// @group colors
+/// @access public
+/// @type String
+$third-color: lighten($base-color, 20)
+
+$base-width: 1200px
