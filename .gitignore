@@ -41,3 +41,4 @@ Thumbs.db
 *.yml
 *.cfg
 .htaccess
+node_modules/
