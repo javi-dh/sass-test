@@ -1,4 +1,5 @@
 var gulp        = require('gulp');
+var converter = require('sass-convert');
 var browserSync = require('browser-sync').create();
 var sassdoc = require('sassdoc');
 var sass        = require('gulp-sass');
@@ -8,7 +9,8 @@ const autoprefixer = require('gulp-autoprefixer');
 // Servidor Localhost + watch sobre archivos css/html
 gulp.task('serve', ['sass'], function() {
 	browserSync.init({
-		proxy: "localhost/adbox/sass-test"
+		proxy: "localhost/php/sass-test",
+		files: ['./*.php']
 	});
 
 	gulp.watch("./sass/*.sass", ['sass'])
@@ -19,6 +21,7 @@ gulp.task('serve', ['sass'], function() {
 gulp.task('sass', function() {
 	return gulp
 	.src('./sass/*.sass')
+
 	.pipe(sourcemaps.init())
 
 	.pipe(sass().on('error', sass.logError))
@@ -27,13 +30,23 @@ gulp.task('sass', function() {
 
 	.pipe(autoprefixer()) // Debe ir antes del sourcemaps.write
 
-	.pipe(sourcemaps.write())
+	.pipe(sourcemaps.write(''))
 
 	.pipe(gulp.dest('./css'))
 
-	.pipe(sassdoc())
+	// .pipe(sassdoc())
 
 	.pipe(browserSync.stream())
 });
 
-gulp.task('default', ['serve']);
+gulp.task('sassdoc', function () {
+  return gulp
+  .src('./sass/*.sass')
+  .pipe(converter({
+      from: 'sass',
+      to: 'scss',
+    }))
+	.pipe(sassdoc());
+});
+
+gulp.task('default', ['serve', 'sassdoc']);

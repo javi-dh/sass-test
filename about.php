@@ -1,17 +1,9 @@
 <?php
-	$title ='Inicio';
+	$title ='About';
 	require_once 'includes/head.php';
 ?>
 </head>
 	<body>
-		Texto plano
-		<span class="icono-facebook"></span>
-		<span class="icono-twitter"></span>
-		<span class="icono-youtube"></span>
-		<span class="icono-instagram"></span>
-
-		<img alt="img" width="100%" style="display: block; margin: auto;" src="https://pbs.twimg.com/profile_banners/293665915/1398362831/1500x500">
-
 		<div class="ribbon yellow">
 			CSS & SASS Rules HaHa
 			<span></span>

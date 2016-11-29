@@ -15,7 +15,8 @@
     "gulp-autoprefixer": "^3.1.1",
     "gulp-real-favicon": "^0.2.1",
     "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "2.0.x",
+    "gulp-sourcemaps": "^2.0.1",
+    "sass-convert": "^0.5.2",
     "sassdoc": "^2.1.20"
   }
 }
